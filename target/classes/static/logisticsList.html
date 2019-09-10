@@ -1,0 +1,75 @@
+<!--操作历史-->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/jquery.dataTables.css">
+<link rel="stylesheet" href="css/AdminLTE.css">
+
+<div class="panel-body" id="app">
+    <!-- 审核历史 -->
+    <div class="tab-content" style="min-height: 230px;">
+        <div class="tab-pane active">
+            <table class="table table-bordered dataTable no-footer">
+                <tbody>
+                <tr id="jl" class="collapse in">
+                    <td class="col-md-12">
+                        <ul class="timeline">
+                            <li v-for="item in list">
+                                <i class="fa fa-circle-o bg-green" data-toggle="tooltip" v-if="item.id%4==1"></i>
+                                <i class="fa fa-circle-o bg-blue" data-toggle="tooltip" v-if="item.id%4==2"></i>
+                                <i class="fa fa-circle-o bg-red" data-toggle="tooltip" v-if="item.id%4==3"></i>
+                                <i class="fa fa-circle-o bg-yellow" data-toggle="tooltip" v-if="item.id%4==0"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i
+                                            class="fa fa-clock-o"></i>&nbsp;{{item.createTime}}</span>
+                                    <div class="timeline-header">
+                                        <!--bg-green.bg-blue.bg-red.bg-red-->
+                                        <small class="label bg-green" v-if="item.id%4==1"><i class="fa fa-circle-o">{{item.companyName}}</i></small>
+                                        <small class="label bg-blue" v-if="item.id%4==2"><i class="fa fa-circle-o">{{item.companyName}}</i></small>
+                                        <small class="label bg-red" v-if="item.id%4==3"><i class="fa fa-circle-o">{{item.companyName}}</i></small>
+                                        <small class="label bg-yellow" v-if="item.id%4==0"><i class="fa fa-circle-o">{{item.companyName}}</i></small>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <span class="text margin-b-10">已到达：{{item.currentAdress}}</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <span class="text margin-b-10">到达时间：{{item.arriveTime}}</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <span class="text margin-b-10">下个站点：{{item.nextAdress}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            list: ''
+        },
+        mounted: function () {
+            this.getmodel();
+        },
+        methods: {
+            getmodel: function (page) {
+                $.ajax({
+                    url: "/logistics/getMyLogisticsList",
+                    type: "GET",
+                    data: {id:parent.vm.id},
+                    dataType: "json",
+                    success: function (data) {
+                        vm.list=data
+                    }
+                });
+            }
+        }
+    });
+
+</script>

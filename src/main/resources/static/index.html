@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- //bootstrap-css -->
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- font CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="css/font.css" type="text/css"/>
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <script>
+        (function () {
+            var js;
+            if (typeof JSON !== 'undefined' && 'querySelector' in document && 'addEventListener' in window) {
+                js = 'js/jquery.min.js';
+            } else {
+                js = 'js/jquery.min.js';
+            }
+            document.write('<script src="' + js + '"><\/script>');
+        }());
+    </script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/screenfull.js"></script>
+    <script>
+        $(function () {
+            $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+            if (!screenfull.enabled) {
+                return false;
+            }
+
+
+            $('#toggle').click(function () {
+                screenfull.toggle($('#container')[0]);
+            });
+        });
+    </script>
+    <!-- charts -->
+    <script src="js/raphael-min.js"></script>
+    <script src="js/morris.js"></script>
+    <link rel="stylesheet" href="css/morris.css">
+    <!-- //charts -->
+    <!--skycons-icons-->
+    <script src="js/skycons.js"></script>
+    <!--//skycons-icons-->
+</head>
+<body class="dashboard-page">
+<script>
+    var theme = $.cookie('protonTheme') || 'default';
+    $('body').removeClass(function (index, css) {
+        return (css.match(/\btheme-\S+/g) || []).join(' ');
+    });
+    if (theme !== 'default') $('body').addClass(theme);
+</script>
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="index.html">
+                <i class="fa fa-home nav_icon"></i>
+                <span class="nav-text">
+					首页
+                </span>
+            </a>
+        </li>
+        <li class="has-subnav loginMenu admin">
+            <a href="javascript:;">
+                <i class="fa fa-cogs" aria-hidden="true"></i>
+                <span class="nav-text">
+					用户管理
+				</span>
+                <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+            </a>
+            <ul>
+                <li>
+                    <a class="subnav-text" href="admin.html">
+                        管理员
+                    </a>
+                </li>
+                <li>
+                    <a class="subnav-text" href="user.html">
+                        快递员
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="loginMenu role">
+            <a href="expressList.html">
+                <i class="fa fa-bar-chart nav_icon"></i>
+                <span class="nav-text">
+						快件管理
+					</span>
+            </a>
+        </li>
+        <li class="loginMenu role">
+            <a href="expressOrder.html">
+                <i class="icon-font nav-icon"></i>
+                <span class="nav-text">
+					订单管理
+					</span>
+            </a>
+        </li>
+        <li class="doorExpress">
+            <a href="doorExpress.html">
+                <i class="icon-table nav-icon"></i>
+                <span class="nav-text">
+					预约上门取件
+					</span>
+            </a>
+        </li>
+        <li class="role">
+            <a href="searchExpress.html">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span class="nav-text">
+					快件查询
+					</span>
+            </a>
+        </li>
+        <li class="loginMenu">
+            <a href="user_info.html">
+                <i class="fa fa-check-square-o" style="position: relative;display: table-cell;width: 60px;text-align: center;vertical-align: middle;font-size: 18px;padding: .7em 0;" aria-hidden="true"></i>
+                <span class="nav-text">
+					个人信息
+					</span>
+            </a>
+        </li>
+        <li>
+            <a href="contact_us.html">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                <span class="nav-text">
+					联系我们
+					</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<section class="wrapper scrollable">
+    <nav class="user-menu">
+        <a href="javascript:;" class="main-menu-access">
+            <i class="icon-proton-logo"></i>
+            <i class="icon-reorder"></i>
+        </a>
+    </nav>
+    <section class="title-bar">
+        <div class="logo">
+            <h1><a href="index.html"><img src="images/logo.png" alt=""/>校园快递</a></h1>
+        </div>
+        <div class="header-right">
+            <div class="profile_details_left">
+                <div class="profile_details">
+                    <ul>
+                        <li class="dropdown profile_details_drop">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <div class="profile_img">
+                                    <span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu drp-mnu ">
+                                <li class="loginMenu"><a href="#" onclick="location.href='/logout'"><i class="fa fa-sign-out"></i> 退出</a>
+                                </li>
+                                <li class="login"><a href="#" onclick="location.href='/login.html'"><i class="fa fa-sign-out"></i> 登录</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+    <div class="main-grid">
+        <div class="agile-grids">
+            <!-- faq -->
+            <div class="progressbar-heading grids-heading">
+                <h2>欢迎使用校园快递!</h2>
+            </div>
+            <!--<div class="banner">
+                <h2>
+                    <a href="index.html">Home</a>
+                    <i class="fa fa-angle-right"></i>
+                    <span>Faqs</span>
+                </h2>
+            </div>-->
+
+            <div class="asked">
+                <div class="questions">
+                    <div>
+                        <div style="float: left">
+                            <p>&nbsp;&nbsp;&nbsp;  1993年，校园快递诞生于广东顺德。自成立以来，校园快递始终专注于服务质量的提升，持续加强基础建设，积极研发和引进具有高科技含量的信息技术与设备以提升作业自动化水平，在国内外建立了庞大的信息采集，市场开发，物流配送，快件收派等速运业务机构及服务网络。
+
+
+
+                                在持续强化速运业务的基础上，校园快递坚持以客户需求为核心，积极拓展多元化业务，针对电商，食品，医药，汽配，电子等不同类型客户开发出一站式供应链解决方案，并提供支付，融资，理财，保价等综合性的金融服务。与此同时，依托强大的物流优势，我们成立校园快递优选，为客户提供品质生活服务，打造校园快递优质生活体验。
+
+
+
+                                多年来，校园快递持续创新，不断铸造高品质服务体验，为客户成功提供坚实有力的支持。</p>
+                            <p>
+                                &nbsp;&nbsp;&nbsp; 校园快递是国内领先的快递物流综合服务商。经过多年发展，已初步建立为客户提供一体化综合物流解决方案的能力，为客户提供仓储管理、销售预测、大数据分析、金融管理等一揽子解决方案。
+
+
+
+                                校园快递同时还是一家具有网络规模优势的智能物流运营商。经过多年潜心经营和前瞻性战略布局，校园快递控股已形成拥有“天网+地网+信息网”三网合一、可覆盖国内外的综合物流服务网络。
+
+
+
+                                校园快递采用直营的经营模式，由总部对各分支机构实施统一经营、统一管理，保障了网络整体运营质量。
+                            </p></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- //faq -->
+        </div>
+
+    </div>
+    <!-- footer -->
+   <!-- <div class="footer">
+        <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/"
+                                                                                    target="_blank" title=""></a> -
+            Collect from <a href="http://www.cssmoban.com/" title="" target="_blank"></a></p>
+    </div>-->
+    <!-- //footer -->
+</section>
+<script src="js/bootstrap.js"></script>
+<script src="js/proton.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/page.js"></script>
+<script>
+    $(function () {
+        isLogin();
+    })
+
+</script>
+
+</body>
+</html>

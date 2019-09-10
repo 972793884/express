@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<head>
+    <title>Tables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- //bootstrap-css -->
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- font CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="css/font.css" type="text/css"/>
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <script>
+        /*  (function () {
+              var js;
+              if (typeof JSON !== 'undefined' && 'querySelector' in document && 'addEventListener' in window) {
+                  js = 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js';
+              } else {
+                  js = 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js';
+              }
+              document.write('<script src="' + js + '"><\/script>');
+          }());*/
+    </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/screenfull.js"></script>
+    <script>
+        $(function () {
+            $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+            if (!screenfull.enabled) {
+                return false;
+            }
+
+            $('#toggle').click(function () {
+                screenfull.toggle($('#container')[0]);
+            });
+        });
+    </script>
+    <!-- tables -->
+    <link rel="stylesheet" type="text/css" href="css/table-style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/basictable.css"/>
+    <script type="text/javascript" src="js/jquery.basictable.min.js"></script>
+    <script type="text/javascript" src="js/layer.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#table').basictable();
+        });
+    </script>
+    <!-- //tables -->
+    <style>
+        tr{
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body class="dashboard-page">
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="index.html">
+                <i class="fa fa-home nav_icon"></i>
+                <span class="nav-text">
+					首页
+                </span>
+            </a>
+        </li>
+        <li class="has-subnav loginMenu admin">
+            <a href="javascript:;">
+                <i class="fa fa-cogs" aria-hidden="true"></i>
+                <span class="nav-text">
+					用户管理
+				</span>
+                <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+            </a>
+            <ul>
+                <li>
+                    <a class="subnav-text" href="admin.html">
+                        管理员
+                    </a>
+                </li>
+                <li>
+                    <a class="subnav-text" href="user.html">
+                        快递员
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="loginMenu">
+            <a href="expressList.html">
+                <i class="fa fa-bar-chart nav_icon"></i>
+                <span class="nav-text">
+						快件管理
+					</span>
+            </a>
+        </li>
+        <li class="loginMenu">
+            <a href="expressOrder.html">
+                <i class="icon-font nav-icon"></i>
+                <span class="nav-text">
+					订单管理
+					</span>
+            </a>
+        </li>
+        <li class="doorExpress">
+            <a href="doorExpress.html">
+                <i class="icon-table nav-icon"></i>
+                <span class="nav-text">
+					预约上门取件
+					</span>
+            </a>
+        </li>
+        <li>
+            <a href="searchExpress.html">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span class="nav-text">
+					快件查询
+					</span>
+            </a>
+        </li>
+        <li class="loginMenu">
+            <a href="user_info.html">
+                <i class="fa fa-check-square-o" style="position: relative;display: table-cell;width: 60px;text-align: center;vertical-align: middle;font-size: 18px;padding: .7em 0;" aria-hidden="true"></i>
+                <span class="nav-text">
+					个人信息
+					</span>
+            </a>
+        </li>
+        <li>
+            <a href="contact_us.html.html">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                <span class="nav-text">
+					联系我们
+					</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<section class="wrapper scrollable">
+    <nav class="user-menu">
+        <a href="javascript:;" class="main-menu-access">
+            <i class="icon-proton-logo"></i>
+            <i class="icon-reorder"></i>
+        </a>
+    </nav>
+    <section class="title-bar">
+        <div class="logo">
+            <h1><a href="index.html"><img src="images/logo.png" alt=""/>校园快递</a></h1>
+        </div>
+        <div class="header-right">
+            <div class="profile_details_left">
+                <div class="profile_details">
+                    <ul>
+                        <li class="dropdown profile_details_drop">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <div class="profile_img">
+                                    <span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu drp-mnu ">
+                                <li class="loginMenu"><a href="#" onclick="location.href='/logout'"><i class="fa fa-sign-out"></i> 退出</a>
+                                </li>
+                                <li class="login"><a href="#" onclick="location.href='/login.html'"><i class="fa fa-sign-out"></i> 登录</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+    <div class="main-grid" id="app">
+        <div class="agile-grids">
+            <!-- tables -->
+
+            <!--<div class="table-heading">
+                <h2>管理员</h2>
+            </div>-->
+            <div class="agile-tables">
+                <div class="w3l-table-info">
+                    <h3>快件列表</h3>
+                    <div style="float: left;padding: 10px">
+                        <button onclick="add()" style="width: 100%" type="button"
+                                class="btn btn-lg btn-primary btn-block">添加+
+                        </button>
+                    </div>
+
+                    <table id="table">
+                        <thead>
+                        <tr>
+                            <th>单号</th>
+                            <th>发件人</th>
+                            <th>电话</th>
+                            <th>发件人地址</th>
+                            <th>收件人</th>
+                            <th>邮箱</th>
+                            <th>收件人地址</th>
+                            <th>重量</th>
+                            <th>总价</th>
+                            <th>当前状态</th>
+                            <th>是否超时</th>
+                            <th>超时时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="item in list" style="">
+                            <td>{{item.code}}</td>
+                            <td>{{item.userNameSend}}</td>
+                            <td>{{item.phoneSend}}</td>
+                            <td :title="item.adressSend">
+                                <div style="width:200px;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">
+                                    {{item.adressSend}}
+                                </div>
+                            </td>
+                            <td>{{item.userNameRecive}}</td>
+                            <td>{{item.phoneRecive}}</td>
+                            <td :title="item.adressRecive">
+                                <div style="width:200px;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">
+                                    {{item.adressRecive}}
+                                </div>
+                            </td>
+                            <td>{{item.weight}}kg</td>
+                            <td>{{item.price}}元</td>
+                            <td v-if="item.status==0"></td>
+                            <td v-if="item.status==1">快递中</td>
+                            <td v-if="item.status==2">待取件(已通知)</td>
+                            <td v-if="item.status==3">已完成</td>
+                            <td v-if="item.overtime==0||item.overtime==''">未超时</td>
+                            <td v-if="item.overtime==1">已超时</td>
+                            <td>{{item.overtimeTime}}</td>
+
+                            <td>
+                                <!-- <div style="float: left;padding: 2px">
+                                     <button style="width: 100%" type="button" class="btn btn-lg btn-primary btn-block">
+                                         修改
+                                     </button>
+                                 </div>-->
+                                <div style="float: left;padding: 2px" v-if="item.status!=3">
+                                    <button style="width: 100%;" type="button" @click="notify(item.id)"
+                                            class="btn btn-lg btn-primary btn-block">
+                                        通知快件到达
+                                    </button>
+                                </div>
+                                <div style="float: left;padding: 2px" v-if="item.status==2">
+                                    <button style="width: 100%;" type="button" @click="updateExpress(item.id)"
+                                            class="btn btn-lg btn-primary btn-block">
+                                        已取件
+                                    </button>
+                                </div>
+                                <div style="float: left;padding: 2px" v-if="item.status==1">
+                                    <button style="width: 100%;" type="button" @click="updateLogistics(item.id,item.companyId)"
+                                            class="btn btn-lg btn-success btn-block">
+                                        更新物流信息
+                                    </button>
+                                </div>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div id="pagination" style="text-align: center;margin-top: 50px">
+                    </div>
+                </div>
+            </div>
+            <!-- //tables -->
+        </div>
+    </div>
+    <!-- footer -->
+    <!--<div class="footer">
+        <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/"
+                                                                                    target="_blank"
+                                                                                    title="模板之家">模板之家</a> - Collect from
+            <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+    </div>-->
+    <!-- //footer -->
+</section>
+<script type="text/javascript" src="js/jqPaginator.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/proton.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/page.js"></script>
+<script>
+    function add() {
+        layer.open({
+            type: 2,
+            title: 'iframe父子操作',
+            maxmin: true,
+            shadeClose: true, //点击遮罩关闭层
+            area: ['80%', '80%'],
+            content: 'express.html'
+        });
+    }
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            list: '',
+            data: '',
+            id: '',
+            companyId:''
+        },
+        mounted: function () {
+            this.getmodel();
+            isLogin()
+        },
+        methods: {
+            getmodel: function (page) {
+                $.ajax({
+                    url: "/express/getExpressList",
+                    type: "GET",
+                    data: {},
+                    dataType: "json",
+                    success: function (data) {
+                        vm.data = data.expressList
+                        build(vm.data, 7, 5)
+                    }
+                });
+
+            },
+            updateLogistics: function (id,companyId) {
+                this.id = id
+                this.companyId=companyId;
+                layer.open({
+                    type: 2,
+                    title: '更新物流信息',
+                    maxmin: true,
+                    shadeClose: true, //点击遮罩关闭层
+                    area: ['80%', '80%'],
+                    content: 'logistics_form.html'
+                });
+            },
+            notify:function (id) {
+                $.ajax({
+                    url: "/notify/notifyUser",
+                    type: "POST",
+                    data: {id:id},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.state=='ok') {
+                            layer.msg("通知成功!")
+                            vm.getmodel()
+                        }else {
+                            layer.msg("通知失败!")
+                        }
+                    }
+                });
+            },
+            updateExpress:function (id) {
+                layer.confirm('确定修改该快件已收件吗？', {
+                    btn: ['确定', '取消'] //按钮
+                }, function () {
+                    $.ajax({
+                        url: "/express/updateExpress",
+                        type: "GET",
+                        data: {
+                            id:id,
+                            status:3
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.state == 'ok') {
+                                layer.msg('快件状态已更新', {icon: 6});
+                                vm.getmodel()
+                            } else {
+                                layer.msg('快件状态更新失败!', {icon: 9});
+                            }
+                        }
+                    });
+
+                }, function () {
+                    layer.msg('取消订单状态修改!', {icon: 9});
+                    /*layer.msg('也可以这样', {
+                        time: 20000, //20s后自动关闭
+                        btn: ['明白了', '知道了']
+                    });*/
+                });
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

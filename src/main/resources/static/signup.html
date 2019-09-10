@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+    <title>Signup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- //bootstrap-css -->
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- font CSS -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+           rel='stylesheet' type='text/css'>-->
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="css/font.css" type="text/css"/>
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/validationEngine.jquery.css" rel="stylesheet"/><!--表单验证插件样式-->
+    <!-- //font-awesome icons -->
+</head>
+<body class="signup-body" style="min-height: 965px">
+<div class="agile-signup">
+
+    <div class="content2">
+        <div class="grids-heading gallery-heading signup-heading">
+            <h2>注册</h2>
+        </div>
+        <form id="registerForm" action="/doRegister" method="post">
+            <input type="text" class="validate[required,ajax[checkName]]" name="name" id="name" value=""
+                   placeholder="用户名">
+            <input type="tel" class="validate[required,custom[mobile]]" maxlength="11" name="phone" value="" placeholder="手机">
+            <input type="email" class="validate[required,custom[email]]" name="email" value="" placeholder="邮箱">
+            <input type="password" name="password" id="password" class="validate[required]" value="" placeholder="密码">
+            <input type="password" class="validate[required,equals[password]]" value="" placeholder="重复密码">
+            <input type="button" class="register" onclick="reg()" value="注册">
+            <input id="login" type="button" class="register" style="background-color: #2D93CA"
+                   onclick="window.location.href='login.html'" value="返回登录"/>
+        </form>
+
+    </div>
+
+    <!-- footer -->
+    <!--<div class="copyright">
+        <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+    </div>-->
+    <!-- //footer -->
+
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="js/jquery.validationEngine.js"></script><!--表单验证插件-->
+<script src="js/jquery.validationEngine-zh_CN.js"></script>
+<script src="js/jquery-form.js"></script><!--ajaxSubmit插件-->
+<script src="js/layer.js"></script><!--弹窗插件-->
+<script>
+    $(function () {
+        $("#registerForm").validationEngine('attach', {
+            relative: true,
+            scroll: true,
+            custom_error_messages: {
+                required: {
+                    message: '这里不能是空的啦'
+                },
+                'equals': {
+                    message: '两次密码不一致'
+                }
+            },
+            ajaxFormValidation: true,
+            overflownDIV: "#divPostion",
+            promptPosition: "bottomRight:20,40" //验证弹出框的位置，topRight,topLeft,bottomRight,bottomLeft,centerRight,centerLeft,inline
+        });
+    })
+
+    function reg() {
+        var state = $("#registerForm").validationEngine('validate');
+        /*alert(state)*/
+        //$("#registerForm").validationEngine('showPrompt')
+        if (state&&ajaxState) {
+            $("#registerForm").ajaxSubmit({
+                dataType: "json",
+                async: false,
+                beforeSubmit: function (formData, jqForm, options) {
+                    tipIndex = parent.layer.load(1, {
+                        shade: 0.01
+                    });
+                },
+                success: function (ret) {
+                    if (ret.state == "ok") {
+                        parent.layer.msg("注册成功!稍后将为您跳转至登录!", {
+                            time: 3000,
+                        })
+                        setTimeout(function () {
+                            $("#login").click()
+                        }, 3000)
+                    } else {
+                        layer.msg(ret.msg, {
+                            time: 3000,
+                        })
+                    }
+
+                },
+                complete: function (ret) {
+                    parent.layer.close(tipIndex);
+                }
+            })
+        }
+
+    }
+
+</script>
+</body>
+</html>
